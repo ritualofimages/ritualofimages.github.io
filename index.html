@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ritual of Images</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #f4f1ec;
+      color: #2e1d1d;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #8b1e3f;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #c14444;
+      text-align: center;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a, .nav-button {
+      color: #fff;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .footer-img {
+      max-width: 750px;
+      border-radius: 12px;
+      margin: 2rem auto 1rem;
+      display: block;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    .quote {
+      font-style: italic;
+      margin: 1rem auto;
+    }
+    .start-button {
+      background-color: #c14444;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 2rem;
+    }
+    footer {
+      background-color: #f4f1ec;
+      color: #3b2f2f;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    #ritual-section {
+      padding: 4rem 1rem;
+      text-align: center;
+      display: none;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Traditional_Slavic_pattern.svg/800px-Traditional_Slavic_pattern.svg.png');
+      background-size: cover;
+      background-repeat: repeat;
+      background-position: center;
+    }
+    .ritual-img {
+      width: 80%;
+      max-width: 600px;
+      margin: 2rem auto;
+      cursor: pointer;
+      display: block;
+      border: 8px double #6d1f30;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: sepia(0.4) contrast(1.1);
+    }
+    .ritual-img:hover {
+      transform: scale(1.03) rotate(-1deg);
+      filter: sepia(0.6) contrast(1.3);
+    }
+    .ritual-text {
+      display: none;
+      font-size: 1.4rem;
+      color: #4a2d2d;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-style: normal;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: softReveal 2.5s ease forwards;
+    }
+
+    @keyframes softReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ritual Slika</h1>
+    <p>“Znate, sada je sve postalo digitalno. Sve su to pikseli, algoritmi, metapodaci…”</p>
+  </header>
+  <nav>
+    <a href="#">Početna</a>
+    <a href="#">Galerija</a>
+    <a href="#">Kontakt</a>
+    <button class="nav-button">Vaša iskustva</button>
+  </nav>
+
+  <main>
+    <img src="DSC_UVOD.jpg" alt="Moja slika" class="footer-img">
+    <p class="quote">"Moja osobna misao ili citat koji želim podijeliti."</p>
+    <button class="start-button" onclick="document.getElementById('ritual-section').style.display = 'block'; document.getElementById('ritual-section').scrollIntoView({ behavior: 'smooth' });">Započni besplatno</button>
+  </main>
+
+  <section id="ritual-section">
+    <img src="DSC_1.jpg" class="ritual-img" onclick="toggleText(0)">
+    <div class="ritual-text" id="text0">krafne u mate</div>
+
+    <img src="DSC_2.jpg" class="ritual-img" onclick="toggleText(1)">
+    <div class="ritual-text" id="text1">krafne u mate</div>
+
+    <img src="DSC_3.jpg" class="ritual-img" onclick="toggleText(2)">
+    <div class="ritual-text" id="text2">krafne u mate</div>
+
+    <img src="DSC_4.jpg" class="ritual-img" onclick="toggleText(3)">
+    <div class="ritual-text" id="text3">krafne u mate</div>
+
+    <img src="DSC_5.jpg" class="ritual-img" onclick="toggleText(4)">
+    <div class="ritual-text" id="text4">krafne u mate</div>
+
+    <img src="DSC_6.jpg" class="ritual-img" onclick="toggleText(5)">
+    <div class="ritual-text" id="text5">krafne u mate</div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ritual of Images</p>
+  </footer>
+
+  <script>
+    function toggleText(index) {
+      const text = document.getElementById('text' + index);
+      if (text.style.display === 'block') {
+        text.style.display = 'none';
+      } else {
+        text.style.display = 'block';
+        text.style.animation = 'softReveal 2.5s ease forwards';
+      }
+    }
+  </script>
+</body>
+</html>
