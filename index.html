@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background-color: #8b1e3f;
       color: #fff;
@@ -83,15 +84,12 @@
       background-repeat: repeat;
       background-position: center;
     }
-    
     .ritual-img {
       width: 80%;
       max-width: 600px;
       margin: 2rem auto;
       display: block;
       border: 8px double #6d1f30;
-      filter: sepia(0.4) contrast(1.1);
-      transition: none;
       cursor: pointer;
     }
     .ritual-text {
@@ -102,106 +100,37 @@
       margin-bottom: 3rem;
       opacity: 1;
     }
-    #gallery-section, #about-section {
+    #about-section {
       display: none;
       padding: 4rem 1rem;
       text-align: center;
       background-color: #f4f1ec;
     }
-
-    /* Gallery styles with fixed image sizes */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .gallery-img {
-      width: 100%;
-      height: 150px; /* fixed height */
-      object-fit: cover;
-      border: 6px solid #8b1e3f;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .gallery-img:hover {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox styles */
-    #lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-    }
-    #lightbox.active {
-      display: flex;
-    }
-    #lightbox img {
-      max-width: 90vw;
-      max-height: 80vh;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.3);
-    }
-    .nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      font-size: 3rem;
-      cursor: pointer;
-      user-select: none;
-      padding: 8px 12px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      transition: background 0.3s ease;
-    }
-    .nav-btn:hover {
-      background: rgba(0,0,0,0.7);
-    }
-    #prev-btn {
-      left: 20px;
-    }
-    #next-btn {
-      right: 20px;
-    }
-    #close-btn {
-      position: fixed;
-      top: 20px; right: 30px;
-      font-size: 2.5rem;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      z-index: 10000;
-    }
   </style>
 </head>
 <body>
+
+  <!-- Ispravljen audio element -->
+  <audio id="zvuk" loop>
+    <source src="sounds-of-waves-313367.mp3" type="audio/mpeg">
+    Vaš preglednik ne podržava audio element.
+  </audio>
+
   <header>
     <h1>Ritual Slika</h1>
-    <p>“Znate, sada je sve postalo digitalno.
-Sve su to pikseli, algoritmi, metapodaci…”</p>
+    <p>“Znate, sada je sve postalo digitalno. Sve su to pikseli, algoritmi, metapodaci…”</p>
   </header>
+
   <nav>
     <a href="#" onclick="showSection('main')">Početna</a>
-    <a href="#" onclick="showSection('gallery-section')">Galerija</a>
-    <a href="#" onclick="showSection('about-section')">O autoru</a>
+    <a href="#" onclick="showSection('about-section')">Slavenska mitologija</a>
   </nav>
 
   <main id="main">
     <img src="DSC_UVOD.jpg" alt="Moja slika" class="footer-img">
     <p class="quote">"Nijedna riječ se nikada ne izgubi ako je netko ponovi."</p>
     <button class="start-button" onclick="document.getElementById('ritual-section').style.display = 'block'; document.getElementById('ritual-section').scrollIntoView({ behavior: 'smooth' });">Započni</button>
+    <button onclick="pokreniZvuk()" class="start-button">Valovi</button>
   </main>
 
   <section id="ritual-section">
@@ -217,67 +146,51 @@ Sve su to pikseli, algoritmi, metapodaci…”</p>
     <div class="ritual-text">„Bosonoga u odmrznutom tlu, osluškivala je valove.“</div>
     <img src="DSC_6.jpg" class="ritual-img" onclick="toggleText(this)">
     <div class="ritual-text">„Ogledalo u rijeci, ime na jeziku. Oboje je nestalo prije nego što su ih razumjeli.“</div>
-  </section>
-
-  <section id="gallery-section">
-    <h2>Galerija</h2>
-    <div class="gallery-container">
-      <img src="performans editane za stranicu/DSC_330 (1).jpg" alt="Galerija 1" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (2).jpg" alt="Galerija 2" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (3).jpg" alt="Galerija 3" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (4).jpg" alt="Galerija 4" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (5).jpg" alt="Galerija 5" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (6).jpg" alt="Galerija 6" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (7).jpg" alt="Galerija 7" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (8).jpg" alt="Galerija 8" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (9).jpg" alt="Galerija 9" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (10).jpg" alt="Galerija 10" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (11).jpg" alt="Galerija 11" class="gallery-img" />
-      <img src="performans editane za stranicu/DSC_330 (12).jpg" alt="Galerija 12" class="gallery-img" />
-    </div>
+    <img src="DSC_330 (200).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Pod sjenom bora, tkali su kosu i konac, pečatili ono što se ne smije izgovoriti.“</div>
+    <img src="DSC_330 (201).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Kosti su bile oprane u dimu, ne da bi se zaboravile - već da bi se nosile.“</div>
+    <img src="DSC_330 (203).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Zvona, konac, plamen. Ritual je započeo tišinom, a završio imenom.“</div>
+    <img src="DSC_330 (204).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Izlili su mlijeko na kamen, a kamen je uzvratio pjevanjem.“</div>
+    <img src="DSC_330 (205).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Nijedna kamera nije mogla uhvatiti ono što je stajalo na vratima, između svjetla i sjećanja.“</div>
+    <img src="DSC_330 (206).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Nazvati to rekonstrukcijom je pogrešno. Ovo nije bila predstava. Bio je to povratak.“</div>
+    <img src="DSC_330 (207).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">“U vatri i vodi tražilo se pročišćenje.”</div>
+    <img src="DSC_330 (208).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">“Kroz tihe šapate dima i zemlje, stari običaji budili su zaboravljene svjetove.”</div>
+    <img src="DSC_330 (209).jpg" class="ritual-img" onclick="toggleText(this)">
+    <div class="ritual-text">„Sjena nije bila kraj. Ona je bila poziv na pamćenje.“</div>
   </section>
 
   <section id="about-section">
-  <h2>O autoru</h2>
-  <div style="max-width: 800px; margin: 0 auto; text-align: justify; column-count: 1; column-gap: 2rem; font-size: 1.1rem; line-height: 1.6;">
-    <p>
-      Slavenska mitologija duboko je povezana s prirodom, duhovima i ciklusima života i smrti. Ona me nadahnula za ovaj fotografski projekt o otocima, mitu i ritualu.
-    </p>
-    <p>
-      U slavenskoj tradiciji, otoci nisu samo komadi zemlje okruženi vodom – oni su liminalni prostori, mjesta prijelaza između svjetova, prebivališta duhova i prizorišta drevnih obreda. Za mene oni simboliziraju istovremeno izolaciju i povezanost s nevidljivim kraljevstvima.
-    </p>
-    <p>
-      Otoci su poveznica s Navom – svijetom mrtvih, te Velesom – bogom podzemlja, vode i kaosa. Prema slavenskoj kozmologiji, postoje tri svijeta: <em>Jav</em> (svijet živih), <em>Nav</em> (svijet mrtvih) i <em>Prav</em> (božanski red). Otoci su mjesto gdje se ove dimenzije dotiču.
-    </p>
-    <p>
-      U slavenskim predajama pojavljuju se i rusalki – duhovi utopljenica, često prikazane kao lijepe, ali opasne žene koje vuku muškarce u dubine. One za mene predstavljaju zaboravljene tajne, povezanost s prirodom i starim vjerovanjima.
-    </p>
-    <p>
-      Posebno me fascinira mit o otoku Buyan – lebdećem otoku koji donosi vjetrove, domu bogova i mjestu gdje se susreću život i smrt. Ondje prebivaju i božice Zorya, kao i čarobni kamen Alatyr. Taj otok se pojavljuje i nestaje, poput slavenskog Avalona.
-    </p>
-    <p>
-      Otoci su ujedno i prostori rituala – osobito tijekom Kupalske noći, kada se pale vatre, puštaju vijenci na vodu i slavi plodnost. Legende govore o čudesnom <em>Cvijetu paprati</em> koji cvjeta samo te noći i daruje onome tko ga pronađe znanje i moć.
-    </p>
-    <p>
-      Otoci su i mjesta izolacije – gdje su prognani čarobnjaci, vračevi i oni koji posjeduju moć. U pričama poput one o Koščej Besmrtnom, tajne i besmrtnost skrivene su duboko na udaljenim, teško dostupnim otocima.
-    </p>
-  </div>
-</section>
+    <h2>Više o slavenskoj mitologiji</h2>
+    <div style="max-width: 800px; margin: 0 auto; text-align: justify; column-count: 1; column-gap: 2rem; font-size: 1.1rem; line-height: 1.6;">
+      <p>
+        Slavenska mitologija duboko je povezana s prirodom, duhovima i ciklusima života i smrti. Ona me nadahnula za ovaj fotografski projekt o otocima, mitu i ritualu.
 
-  <!-- Lightbox modal -->
-  <div id="lightbox">
-    <span id="close-btn">&times;</span>
-    <span id="prev-btn" class="nav-btn">&#10094;</span>
-    <img src="" alt="Velika slika" id="lightbox-img" />
-    <span id="next-btn" class="nav-btn">&#10095;</span>
-  </div>
+        U slavenskoj tradiciji, otoci nisu samo komadi zemlje okruženi vodom – oni su liminalni prostori, mjesta prijelaza između svjetova, prebivališta duhova i prizorišta drevnih obreda. Za mene oni simboliziraju istovremeno izolaciju i povezanost s nevidljivim kraljevstvima.
+
+        Otoci su poveznica s Navom – svijetom mrtvih, te Velesom – bogom podzemlja, vode i kaosa. Prema slavenskoj kozmologiji, postoje tri svijeta: Jav (svijet živih), Nav (svijet mrtvih) i Prav (božanski red). Otoci su mjesto gdje se ove dimenzije dotiču.
+
+        U slavenskim predajama pojavljuju se i rusalki – duhovi utopljenica, često prikazane kao lijepe, ali opasne žene koje vuku muškarce u dubine. One za mene predstavljaju zaboravljene tajne, povezanost s prirodom i starim vjerovanjima.
+
+        Posebno me fascinira mit o otoku Buyan – lebdećem otoku koji donosi vjetrove, domu bogova i mjestu gdje se susreću život i smrt. Ondje prebivaju i božice Zorya, kao i čarobni kamen Alatyr. Taj otok se pojavljuje i nestaje, poput slavenskog Avalona.
+
+        Otoci su ujedno i prostori rituala – osobito tijekom Kupalske noći, kada se pale vatre, puštaju vijenci na vodu i slavi plodnost. Legende govore o čudesnom Cvijetu paprati koji cvjeta samo te noći i daruje onome tko ga pronađe znanje i moć.
+
+        Otoci su i mjesta izolacije – gdje su prognani čarobnjaci, vračevi i oni koji posjeduju moć. U pričama poput one o Koščej Besmrtnom, tajne i besmrtnost skrivene su duboko na udaljenim, teško dostupnim otocima.
+      </p>
+    </div>
+  </section>
 
   <script>
-    // Funkcija za prikaz sekcija po klikovima na nav
     function showSection(sectionId) {
       document.getElementById('main').style.display = 'none';
       document.getElementById('ritual-section').style.display = 'none';
-      document.getElementById('gallery-section').style.display = 'none';
       document.getElementById('about-section').style.display = 'none';
 
       if(sectionId === 'main') {
@@ -287,74 +200,20 @@ Sve su to pikseli, algoritmi, metapodaci…”</p>
       }
     }
 
-    // Toggle tekst ispod ritual slika
     function toggleText(img) {
       const textDiv = img.nextElementSibling;
       if(textDiv.style.display === 'block') {
         textDiv.style.display = 'none';
       } else {
-        // sakrij ostale
         document.querySelectorAll('.ritual-text').forEach(el => el.style.display = 'none');
         textDiv.style.display = 'block';
       }
     }
 
-    // Lightbox gallery script
-    const galleryImages = document.querySelectorAll('.gallery-img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.getElementById('close-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    let currentIndex = 0;
-
-    galleryImages.forEach((img, i) => {
-      img.addEventListener('click', () => {
-        currentIndex = i;
-        openLightbox();
-      });
-    });
-
-    function openLightbox() {
-      lightbox.classList.add('active');
-      lightboxImg.src = galleryImages[currentIndex].src;
+    function pokreniZvuk() {
+      const zvuk = document.getElementById('zvuk');
+      zvuk.play();
     }
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', showPrev);
-    nextBtn.addEventListener('click', showNext);
-
-    document.addEventListener('keydown', (e) => {
-      if (!lightbox.classList.contains('active')) return;
-      if (e.key === 'ArrowLeft') {
-        showPrev();
-      } else if (e.key === 'ArrowRight') {
-        showNext();
-      } else if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
   </script>
 </body>
 </html>
